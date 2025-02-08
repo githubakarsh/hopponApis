@@ -1,11 +1,12 @@
 
 from flask import Flask
 from markupsafe import escape
+from flask_cors import CORS
 
 events = Flask(__name__)
+CORS(events);
 
-
-@events.route("/create-event")
+@events.route("/create-event", methods=['GET'])
 def createevent():
     return "create event"
 
