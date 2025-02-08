@@ -10,7 +10,7 @@ def login():
     return f"logged in successfully"
 
 
-@user_f.route("/logout/<userUniqueId>", method=['GET'])
+@user_f.route("/logout/<userUniqueId>")
 def logout(userUniqueId):
     #make the user to logout
     return f"logout successful for {userUniqueId}"
@@ -19,3 +19,9 @@ def logout(userUniqueId):
 def get_User_Profile(userUniqueId):
     #send the user profile details with the permission the user has
     return f"user proflie for {userUniqueId} has been sent successful"
+
+@user_f.route("/signup", methods=['POST'])
+def userSignup():
+    return f"user sign up successful"
+
+
