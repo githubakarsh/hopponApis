@@ -3,7 +3,7 @@ from flask import Flask, request
 from markupsafe import escape
 from flask_cors import CORS
 events = Flask(__name__)
-CORS(events);
+CORS(events)
 
 @events.route("/create-user", methods=['POST'])
 def createevent():
