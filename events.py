@@ -1,17 +1,18 @@
 
-from flask import Flask, request
+from flask import Flask, request, make_response
 from markupsafe import escape
 from flask_cors import CORS
+from .utils.validateUserSignupDetails import validateUserSignupDetails
+
 events = Flask(__name__)
 CORS(events)
 
 @events.route("/create-user", methods=['POST'])
 def createevent():
     signup_details = request.get_json()
-    
-    print(signup_details)
-    return "create event"
-
+    user_validator = validateUserSignupDetails(signup_details)
+    response = make_response('response',user_validator)
+    return response
 @events.route("/delete-event")
 def deleteEvent():
     return "delete event"

@@ -6,7 +6,7 @@ this will run on http://127.0.0.1:5000
 
 $ flask --app hello run --debug - to open debug mode on
 
-flask --app events
+flask --app events run
 
 
 
