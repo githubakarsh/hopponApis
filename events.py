@@ -1,13 +1,14 @@
 
-from flask import Flask
+from flask import Flask, request
 from markupsafe import escape
 from flask_cors import CORS
 
 events = Flask(__name__)
 CORS(events);
 
-@events.route("/create-event", methods=['GET'])
+@events.route("/create-event", methods=['POST'])
 def createevent():
+    print(request.json)
     return "create event"
 
 @events.route("/delete-event")
