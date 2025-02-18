@@ -1,5 +1,5 @@
 
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, jsonify
 from markupsafe import escape
 from flask_cors import CORS
 from .utils.validateUserSignupDetails import validateUserSignupDetails
@@ -12,7 +12,7 @@ CORS(events)
 def createevent():
     signup_details = request.get_json()
     user = User(email=signup_details['email'], phone_number=signup_details['phoneNumber'], password=signup_details['password'], reset_password=signup_details['resetPassword'])
-    print(user)
+    print(signup_details)
     user_validator = validateUserSignupDetails(user)
     response = make_response('response',user_validator)
     return response
