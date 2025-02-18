@@ -3,6 +3,7 @@ from flask import Flask, request, make_response
 from markupsafe import escape
 from flask_cors import CORS
 from .utils.validateUserSignupDetails import validateUserSignupDetails
+from .utils.classConstructors.createUserClass import User
 
 events = Flask(__name__)
 CORS(events)
@@ -10,7 +11,9 @@ CORS(events)
 @events.route("/create-user", methods=['POST'])
 def createevent():
     signup_details = request.get_json()
-    user_validator = validateUserSignupDetails(signup_details)
+    user = User(email=signup_details['email'], phone_number=signup_details['phoneNumber'], password=signup_details['password'], reset_password=signup_details['resetPassword'])
+    print(user)
+    user_validator = validateUserSignupDetails(user)
     response = make_response('response',user_validator)
     return response
 @events.route("/delete-event")
