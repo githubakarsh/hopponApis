@@ -51,3 +51,7 @@ def commentAevent(eventId):
 @events.route("/addImages/<eventId>")
 def addImagesToEvent(eventId):
     return f"add images to event id {eventId}"
+
+@events.route('/get-events')
+def getEvents():
+    return []
